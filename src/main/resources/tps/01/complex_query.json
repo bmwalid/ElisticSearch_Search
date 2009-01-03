@@ -1,0 +1,22 @@
+For example, if you want to search used “Audi”, “Kia” and “ Toyota” for models “A6”, “Camry” and “Optima”.
+
+The boolean format will be:
+
+(make = Audi OR make = Kia OR make = Toyota) AND (model = A6 OR model = Camry OR model = Optima) AND condition = used
+
+{
+"query":{
+        "bool":{
+"must":[
+{
+        "bool":{
+        "should":{
+
+}
+}
+}
+]
+
+}
+}
+}
