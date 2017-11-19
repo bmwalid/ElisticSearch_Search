@@ -1,0 +1,7 @@
+//curl -XDELETE http://137.74.41.51:9200/tp2
+//curl -XPOST http://137.74.41.51:9200/tp2/record/1 -d '{"idFonctionnel":"premier", "valeurs": []}'
+//curl -XGET http://137.74.41.51:9200/tp2/record/_search
+[
+  {"id":1, "valeurs": []},
+  {"id":2, "valeurs": ["fake"]}
+]

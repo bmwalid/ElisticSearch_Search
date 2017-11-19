@@ -1,0 +1,12 @@
+//curl -XPOST http://137.74.41.51:9200/tp02/record/1/_update -d '{   "script": {     "inline": "ctx._source.valeurs += params.nouveau", "lang":"groovy" ,"params": {       "nouveau": "znregistrement en plus"     }   } }'
+//curl -XPOST http://127.0.0.1:9200/tp02/record/1/_update -d
+
+{
+  "script": {
+    "inline": "ctx._source.valeurs += params.nouveau",
+    "lang": "painless",
+    "params": {
+      "nouveau": "znregistrement en plus"
+    }
+  }
+}

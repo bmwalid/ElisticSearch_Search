@@ -1,0 +1,38 @@
+//curl -XPUT http://$IP_ES:9200/tuto01/sample/_mapping -d '{ "sample": {"_all": { "enabled": false }, "properties": { "auteur" : { "type": "string"}, "auteur_raw" : { "type": "string", "index" :"not_analyzed"}, "birthYear": { "type": "long"}, "deathYear": { "type": "long"}, "publicationDate": { "type": "date", "format"  : "yyyy-MM-dd"}, "book" : { "type": "string"}, "excerpt" : { "type": "string"} } } }'
+
+
+
+{
+  "sample": {
+      "_all": {
+        "enabled": true
+      },
+    "properties": {
+      "auteur" : {
+       "type" : "string"
+      },"auteur_raw" : {
+       "type" : "string",
+        "index" :"not_analyzed"
+      },
+      "birthYear": {
+        "type": "long"
+      },
+      "deathYear": {
+        "type": "long"
+      },
+      "publicationDate": {
+        "type": "date",
+        "format"  : "yyyy-MM-dd"
+      },
+      "book" : {
+        "type" : "string"
+      },
+      "excerpt" : {
+        "type" : "string"
+      }
+    }
+  }
+}
+
+
+
