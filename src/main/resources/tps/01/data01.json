@@ -1,5 +1,8 @@
-// curl -XPOST http://$IP_ES:9200/tuto01/sample -d  '{   "auteur" : "Marcel PROUST","auteur_raw" : "Marcel PROUST",   "birthYear": "1871",   "deathYear": "1922",   "publicationDate": "1919-01-01",   "book" : "A l ombre des jeunes filles en fleurs ",   "excerpt" : "Et tout d un coup le souvenir m est apparu. Ce goût, c était celui du petit morceau de madeleine que le dimanche matin à Combray (parce que ce jour-là je ne sortais pas avant l heure de la messe), quand j allais lui dire bonjour dans sa chambre, ma tante Léonie m offrait après l avoir trempé dans son infusion de thé ou de tilleul." }'
-// curl -XPOST http://$IP_ES:9200/tuto01/sample -d  '{   "auteur" : "Jacques BREL","auteur_raw" : "Jacques BREL",   "birthYear": "1930",   "deathYear": "1980",   "publicationDate": "1972-01-01",   "book" : "Madeleine ",   "excerpt" : "Ce soir j attends Madeleine J ai apporté du lilas   J en apporte toutes les semaines  Madeleine elle aime bien ça  Ce soir j attends Madeleine   On prendra le tram trente-trois  Pour manger des frites chez Eugène Madeleine elle aime tant ça..." }'
+curl -XPOST http://localhost:9200/tuto01/sample -H 'Content-Type: application/json' -d  '{   "auteur" : "Marcel PROUST","auteur_raw" : "Marcel PROUST",   "birthYear": "1871",   "deathYear": "1922",   "publicationDate": "1919-01-01",   "book" : "A l ombre des jeunes filles en fleurs ",   "excerpt" : "Et tout d un coup le souvenir m est apparu. Ce goût, c était celui du petit morceau de madeleine que le dimanche matin à Combray (parce que ce jour-là je ne sortais pas avant l heure de la messe), quand j allais lui dire bonjour dans sa chambre, ma tante Léonie m offrait après l avoir trempé dans son infusion de thé ou de tilleul." }'
+curl -XPOST http://localhost:9200/tuto01/sample -H 'Content-Type: application/json' -d  '{   "auteur" : "Jacques BREL","auteur_raw" : "Jacques BREL",   "birthYear": "1930",   "deathYear": "1980",   "publicationDate": "1972-01-01",   "book" : "Madeleine ",   "excerpt" : "Ce soir j attends Madeleine J ai apporté du lilas   J en apporte toutes les semaines  Madeleine elle aime bien ça  Ce soir j attends Madeleine   On prendra le tram trente-trois  Pour manger des frites chez Eugène Madeleine elle aime tant ça..." }'
+
+
+
 
 { "auteur" : "Marcel PROUST","auteur_raw" : "Marcel PROUST",   "birthYear": "1871",   "deathYear": "1922",   "publicationDate": "1919-01-01",   "book" : "A l ombre des jeunes filles en fleurs ",   "excerpt" : "Et tout d un coup le souvenir m est apparu. Ce goût, c était celui du petit morceau de madeleine que le dimanche matin à Combray (parce que ce jour-là je ne sortais pas avant l heure de la messe), quand j allais lui dire bonjour dans sa chambre, ma tante Léonie m offrait après l avoir trempé dans son infusion de thé ou de tilleul."
 ,"labels" : ["Français","Classique","Littérature"]
@@ -7,8 +10,7 @@
 {   "auteur" : "Jacques BREL","auteur_raw" : "Jacques BREL",   "birthYear": "1930",   "deathYear": "1980",   "publicationDate": "1972-01-01",   "book" : "Madeleine ",   "excerpt" : "Ce soir j attends Madeleine J ai apporté du lilas   J en apporte toutes les semaines  Madeleine elle aime bien ça  Ce soir j attends Madeleine   On prendra le tram trente-trois  Pour manger des frites chez Eugène Madeleine elle aime tant ça..." }
 
 
-
-GET /_search
+curl -XGET http://$IP_ES:9200/tuto01/sample/_search?pretty -H 'Content-Type: application/json' -d  '
 {
   "query": {
     "range": {
@@ -18,4 +20,7 @@ GET /_search
       }
     }
   }
-}
+}'
+
+
+curl -XPOST http://localhost:9200/tuto01/sample -H 'Content-Type: application/json' -d  '{   "auteur" : "Jacques BREL_2","auteur_raw" : "Jacques BREL",   "birthYear": "1930",   "deathYear": "1980",   "publicationDate": "1972-01-01",   "book" : "Madeleine ",   "excerpt" : "Ce soir j attends Madeleine J ai apporté du lilas   J en apporte toutes les semaines  Madeleine elle aime bien ça  Ce soir j attends Madeleine   On prendra le tram trente-trois  Pour manger des frites chez Eugène Madeleine elle aime tant ça..." ,"other_field":"anything"}'

@@ -1,22 +1,80 @@
-For example, if you want to search used “Audi”, “Kia” and “ Toyota” for models “A6”, “Camry” and “Optima”.
 
-The boolean format will be:
-
-(make = Audi OR make = Kia OR make = Toyota) AND (model = A6 OR model = Camry OR model = Optima) AND condition = used
-
+//oeuvres de type livre
+curl -XGET localhost:9200/tuto01/_search?pretty -H 'Content-Type: application/json' -d'
 {
-"query":{
-        "bool":{
-"must":[
-{
-        "bool":{
-        "should":{
+"query" :{
+"match" : {
+"labels":"Classique"
+}
+}
+}
 
+'
+
+        //les documents qui ne sont pas en anglais
+curl -XPOST localhost:9200/tuto01/_search?pretty -H 'Content-Type: application/json' -d'
+{
+"query": {
+"bool": {
+"must_not" : {
+"match": {
+"labels": "anglais"
+}
+}
+}
+}
+}'
+
+//ceux dont le titre contiennent "jeunes"
+curl -XPOST localhost:9200/tuto01/_search?pretty -H 'Content-Type: application/json' -d'
+{
+"query": {
+        "match":
+{"book":"jeunes"}
+}
+}'
+
+        // les documents qui sont apparus aprés 1919
+curl -XPOST localhost:9200/tuto01/_search?pretty -H 'Content-Type: application/json' -d'
+{
+"query": {
+"range": {
+"publicationDate": {
+"gte": "1919-01-01"
+}
+}
+}
+}'
+
+curl -XPOST localhost:9200/tuto01/_search?pretty -H 'Content-Type: application/json' -d'
+{
+"query": {
+"bool":{
+"must": [
+{"match" : {
+"labels":"Classique"
+}},{
+"bool": {
+"must_not" : {
+"match": {
+"labels": "anglais"
+}
+}
+}
+},
+{
+"match":
+{"book":"jeunes"}
+}
+,
+{
+"range": {
+"publicationDate": {
+"gte": "1919-01-01"
 }
 }
 }
 ]
-
 }
 }
-}
+}'
